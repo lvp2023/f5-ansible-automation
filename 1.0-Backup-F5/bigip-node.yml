@@ -1,6 +1,6 @@
 ---
 - name: BIG-IP SETUP
-  hosts: lb
+  hosts: "{{ services }}"
   connection: local
   gather_facts: true
 
@@ -9,8 +9,8 @@
       ansible.builtin.set_fact:
         provider:
           server: "{{ ansible_host }}"
-          # user: "{{ f5_admin_user }}"
-          # password: "{{ f5_admin_password }}"
+          #user: "{{ f5_admin_user }}"
+          #password: "{{ f5_admin_password }}"
           server_port: "{{ f5_admin_port }}"
           validate_certs: false
 
