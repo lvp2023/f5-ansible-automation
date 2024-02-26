@@ -4,7 +4,7 @@
     token: '6482398803:AAGxJOsriVhWRvsM-VMd4ZehsvfS0ZCUXQE'
     api_args:
       chat_id: -1002094147640
-      parse_mode: "markdown"
+      parse_mode: "MarkdownV2"
       text: "[{{ services }}] Backup complete, file name :{{ file_name }} has been create at: {{ local_folder_location }}."
       disable_web_page_preview: True
       disable_notification: True
