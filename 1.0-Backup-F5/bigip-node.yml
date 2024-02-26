@@ -1,18 +1,19 @@
 ---
 - name: BIG-IP SETUP
   hosts: "{{ services }}"
+  roles:
+    - build_config
+    - telegram
   connection: local
   gather_facts: true
+
+  vars:
+      config_file: "{{ config_assemble }}/all.conf"
 
   tasks:
     - name: Setup provider
       ansible.builtin.set_fact:
-        provider:
-          server: "{{ ansible_host }}"
-          #user: "{{ f5_admin_user }}"
-          #password: "{{ f5_admin_password }}"
-          server_port: "{{ f5_admin_port }}"
-          validate_certs: false
+        provider: "{{ connection_settings }}"
 
     - name: Download a new UCS
       f5networks.f5_modules.bigip_ucs_fetch:
@@ -20,4 +21,5 @@
         dest: "{{local_folder_location}}/{{file_name}}"
         provider: "{{ provider }}"
       delegate_to: localhost
+      notify: Download a new UCS
 
