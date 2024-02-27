@@ -8,5 +8,5 @@ connection_settings:
   server_port: "{{ 443 }}"
   timeout: "{{ commit_timeout }}"
   validate_certs: false
-file_name: "backup_{{ inventory_hostname }}_{{ ansible_date_time.iso8601 }}.ucs"
+file_name: "backup_{{ inventory_hostname }}_{{ ansible_date_time.date }}.ucs"
 local_folder_location: "/var/tmp/awx/f5_backup"
