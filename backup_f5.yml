@@ -27,7 +27,7 @@
         path: "{{ local_folder_location }}"
         state: directory
 
-   - name: Upload backup file to FTP server using curl
+    - name: Upload backup file to FTP server using curl
       ansible.builtin.shell: 
         cmd: curl -T "{{ local_folder_location }}/{{ file_name }}" ftp://{{ ftp_server }}{{ ftp_remote_path }}/ --user "{{ ftp_username }}:{{ ftp_password }}"
       args:
