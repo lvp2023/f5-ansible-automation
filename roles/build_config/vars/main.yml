@@ -9,4 +9,6 @@ connection_settings:
   timeout: "{{ commit_timeout }}"
   validate_certs: false
 file_name: "backup_{{ inventory_hostname }}_{{ ansible_date_time.date }}.ucs"
-local_folder_location: "/var/tmp/awx/f5_backup"
+local_folder_location: "/var/f5_backup"
+ftp_remote_path: "/mnt/shares/ftp/backup/F5_WAF"
+ftp_port: 21
