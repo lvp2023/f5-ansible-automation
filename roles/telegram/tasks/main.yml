@@ -1,7 +1,7 @@
 ---
 - name: Send notify to Telegram
   community.general.telegram:
-    token: {{ token_tele }}
+    token: "{{ token_tele }}"
     api_args:
       chat_id: -1002094147640
       parse_mode: "MarkdownV2"
