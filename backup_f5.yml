@@ -22,3 +22,26 @@
         provider: "{{ provider }}"
       delegate_to: localhost
 
+    - name: Ensure local backup folder exists
+      ansible.builtin.file:
+        path: "{{ local_folder_location }}"
+        state: directory
+
+    - name: Ensure the required FTP path exists on the server
+        community.general.ftp:
+          host: "{{ ftp_server }}"
+          user: "{{ ftp_username }}"
+          password: "{{ ftp_password }}"
+          path: "{{ ftp_remote_path }}"
+          state: directory
+          port: "{{ ftp_port }}"
+
+    - name: Upload backup file to FTP server
+        community.general.ftp:
+          host: "{{ ftp_server }}"
+          user: "{{ ftp_username }}"
+          password: "{{ ftp_password }}"
+          src: "{{ local_folder_location }}/{{ file_name }}"
+          dest: "{{ ftp_remote_path }}/{{ file_name }}"
+          mode: "put"
+          port: "{{ ftp_port }}"
