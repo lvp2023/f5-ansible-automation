@@ -23,12 +23,12 @@
       delegate_to: localhost
 
     - name: Ensure local backup folder exists
-      ansible.builtin.file:
+      ansible.builtin.file:mnt/shares/ftp/backup/F5_WAF
         path: "{{ local_folder_location }}"
         state: directory
 
     - name: Upload backup file to FTP server using curl
       ansible.builtin.shell: 
-        cmd: curl -T "{{ local_folder_location }}/{{ file_name }}" ftp://{{ ftp_server }}{{ ftp_remote_path }}/ --user "{{ ftp_username }}:{{ ftp_password }}"
+        cmd: curl -T "{{ local_folder_location }}/{{ file_name }}" ftp://{{ ftp_server }}/ --user "{{ ftp_username }}:{{ ftp_password }}"
       args:
         warn: false
